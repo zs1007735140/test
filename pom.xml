@@ -12,6 +12,8 @@
         <module>wine-commons</module>
         <module>wine-service-Api</module>
 
+        <module>wine-eureka</module>
+        <module>wine-config-server</module>
     </modules>
 
 
