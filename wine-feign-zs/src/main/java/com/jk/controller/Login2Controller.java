@@ -1,6 +1,6 @@
 package com.jk.controller;
 
-import com.jk.bean.LoginBean;
+import com.jk.model.LoginBean;
 import com.jk.service.Login2Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

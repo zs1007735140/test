@@ -1,6 +1,6 @@
 package com.jk.controller;
 
-import com.jk.bean.User;
+import com.jk.model.User;
 import com.jk.service.Login2Service;
 import com.jk.util.Constant;
 import org.springframework.beans.factory.annotation.Autowired;
