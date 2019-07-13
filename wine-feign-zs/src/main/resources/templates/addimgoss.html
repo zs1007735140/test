@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+
+
+<script src="/js/easyui1.5/jquery.min.js"></script>
+<link rel="stylesheet" href="/js/bootstrap3/css/bootstrap.css">
+<script src="/js/bootstrap3/js/bootstrap.js"></script>
+
+<link rel="stylesheet" href="/js/bootstrap-table/bootstrap-table.css">
+<script src="/js/bootstrap-table/bootstrap-table.js"></script>
+<script src="/js/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+
+<link rel="stylesheet" href="/js/bootstrap-datetimepicker/css/bootstrap-datetimepicker.css">
+<script src="/js/bootstrap-datetimepicker/js/bootstrap-datetimepicker.js"></script>
+<script src="/js/bootstrap-datetimepicker/js/locales/bootstrap-datetimepicker.zh-CN.js"></script>
+<script src="/js/bootbox/bootbox.all.min.js"></script>
+<script src="/js/bootstrap-fileinput/js/fileinput.js"></script>
+<script src="/js/bootstrap-fileinput/js/locales/zh.js"></script>
+<link rel="stylesheet" href="/js/bootstrap-fileinput/css/fileinput.css">
+
+<script src="/js/uploadify/jquery.uploadify.js"></script>
+<link rel="stylesheet" href="/js/uploadify/uploadify.css">
+
+<link rel="stylesheet" href="/js/layui-v2.4.5/layui/css/layui.css"  media="all">
+<body>
+
+
+
+<form>
+    <table >
+        <!--<div class="form-group">-->
+        <!--<label for="imgId"><h4>*营业执照：</h4></label>-->
+        <!--<input class="form-control" id="book_Img" name="suppImg" type="file" />-->
+        <!--<input type="hidden" id="imgId" name="gimg1" >-->
+        <!--</div>-->
+        <tr>
+            <td><h4><font color="red">*</font>营业执照：</h4></td>
+            <td><input type="file" id="butOne">
+                <input type="hidden" id="imagea" name="img">
+                <div id="showImgDiv" style="width: 150px;height: 150px;border-style:solid;border-width:1px; border-color:black;">
+                    <img src="" id="testimg" style="width: 150px;height: 150px;"/>
+                </div>
+                <div id="showBars"></div>
+            </td>
+        </tr>
+
+
+
+    </table>
+
+</form>
+
+</body>
+<script type="text/javascript">
+    //文件域的id
+    $("#butOne").uploadify({
+        //前台请求后台的url 不可忽略的参数
+        'uploader': "../upload/upImg",
+        //插件自带 不可忽略的参数
+        'swf': "/js/uploadify/uploadify.swf",
+        //撤销按钮的图片路径
+        'cancelImg': "/js/uploadify/uploadify-cancel.png",
+        //如果为true 为自动上传 在文件后 为false 那么它就要我们自己手动点上传按钮
+        'auto': true,
+        //可以同时选择多个文件 默认为true 不可忽略
+        'multi': false,
+        //给上传按钮设置文字
+        'buttonText': "上传头像",
+        //上传后队列是否消失
+        'removeCompleted': true,
+        'removeTimeout': 1,
+        //上传文件的个数
+        'uploadLimit': 2,
+        'fileTypeExts': "*.jpg;*.jpge;*.gif;*.png",
+        'fileSizeLimit': "2MB",
+        //给div的进度条加背景 不可忽略
+        'queueID': "showBars",
+        // controller层方法中接收文件的参数名--------artImg
+        'fileObjName': "artImg",
+        //上传成功后的回调函数
+        'onUploadSuccess': function (file, data, response) {
+            $("#testimg").prop("src", data);
+            $("#imagea").val(data);
+            alert("上传成功")
+        }
+    })
+
+</script>
+
+
+<!--<script type="text/javascript">
+    $(function () {
+        $("#book_Img").fileinput({
+            //上传按钮
+            showUpload: true,
+            //移除按钮
+            showRemove: true,
+            //最大上传文件的个数，想要多选文件，input文件域必须加上multiple这个属性
+            // maxFileCount:2,
+            //主样式
+            mainClass: "input-group-lg",
+            //按钮样式
+            browseClass: "btn btn-primary btn-block",
+            //语言设置：中文
+            language: 'zh',
+            //允许预览的文件类型
+            allowedPreviewTypes : ['image', 'html', 'text', 'video', 'audio', 'flash'],
+            //允许选择的文件后缀名
+            allowedFileExtensions: ['jpg', 'png', 'gif', 'bmp'],
+            //最大上传文件的大小（KB）
+            maxFileSize: 2000,
+            //是否显示路径文本框
+            showCaption: true,
+            //是否显示预览
+            showPreview: true,
+            //是否显示关闭预览框
+            showClose: false,
+            //是否显示文件选择按钮
+            showBrowse: true,
+            //文件上传的路径，设置可实现拖拽
+            uploadUrl: '/upload/upImg',
+            validateInitialCount: true,
+            previewFileIcon: "<i class='glyphicon glyphicon-king'></i>",
+            msgFilesTooMany: "选择上传的文件数量({n}) 超过允许的最大数值{m}！",
+            dropZoneTitle: "从前有个小孩，同学总笑话他的脸长的像屁股，",
+            // 这个配置就是解决办法了,初始化时限制图片大小
+            previewSettings: {
+                image: {width: "100px", height: "100px"},
+            }
+        });
+        //fileuploaded 上传文件之后的方法
+        $('#book_Img').on('fileuploaded', function (event, data, previewId, index) {
+            //alert(data.response.imgId);
+            //console.info(data.response.imgId);
+            //图片主键回显到隐藏域
+            $("#imgId").val(data.response.imgId);
+        });
+    })
+</script>-->
+
+
+
+
+
+</html>

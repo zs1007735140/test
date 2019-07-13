@@ -20,6 +20,13 @@
     </properties>
 
     <dependencies>
+        <!-- 数据库连接池 -->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
         <dependency>
             <groupId>com.jk</groupId>
             <artifactId>wine-commons</artifactId>
